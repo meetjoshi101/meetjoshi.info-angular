@@ -7,13 +7,13 @@ import { NavbarComponent } from './components/navbar.component';
   standalone: true,
   imports: [RouterOutlet, NavbarComponent],
   template: `
-    <div class="min-h-screen bg-white text-gray-700 font-light">
+    <div class="min-h-screen bg-[#fdfbf7] text-[#43302b] font-light">
       <!-- Sidebar Component (Responsive) -->
       <app-sidebar />
       
       <!-- Main Content Area -->
-      <main class="md:ml-[300px] min-h-screen transition-all duration-300 bg-white">
-        <div class="px-6 py-10 md:px-12 md:py-16 lg:px-20 lg:py-20 max-w-5xl">
+      <main class="md:ml-[260px] min-h-screen transition-all duration-300 bg-[#fdfbf7]">
+        <div class="px-6 py-10 md:px-12 md:py-16 lg:px-20 lg:py-20 max-w-7xl">
           <router-outlet></router-outlet>
         </div>
       </main>
