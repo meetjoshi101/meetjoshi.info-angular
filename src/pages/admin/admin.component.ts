@@ -8,12 +8,12 @@ import { ContentService, Project, BlogPost } from '../../services/content.servic
   standalone: true,
   imports: [CommonModule, FormsModule],
   template: `
-    <div class="min-h-screen bg-[#f0ede6] flex font-sans text-[#43302b]">
+    <div class="min-h-screen bg-[#FDFBF6] flex font-sans text-[#1c1917]">
       
       <!-- Sidebar -->
-      <aside class="w-64 bg-[#43302b] text-[#d6d3cd] flex flex-col fixed h-full z-10">
+      <aside class="w-64 bg-[#1c1917] text-[#d6d3d1] flex flex-col fixed h-full z-10">
         <div class="p-8">
-          <h1 class="font-serif text-2xl text-white italic">Admin<span class="text-[#e67e22]">.</span></h1>
+          <h1 class="font-serif text-2xl text-white italic">Admin<span class="text-[#D97706]">.</span></h1>
         </div>
         <nav class="flex-1 px-4 space-y-2">
           <button (click)="activeTab.set('dashboard')" 
@@ -38,7 +38,7 @@ import { ContentService, Project, BlogPost } from '../../services/content.servic
             Journal
           </button>
         </nav>
-        <div class="p-8 text-xs text-[#8c7b75] uppercase tracking-widest">
+        <div class="p-8 text-xs text-[#a8a29e] uppercase tracking-widest">
            v2.0.1 Stable
         </div>
       </aside>
@@ -49,30 +49,30 @@ import { ContentService, Project, BlogPost } from '../../services/content.servic
         <!-- DASHBOARD VIEW -->
         @if (activeTab() === 'dashboard') {
           <div class="animate-fade-in-up">
-            <h2 class="text-4xl font-serif font-bold mb-2">Welcome back, Alex.</h2>
-            <p class="text-[#8c7b75] mb-12">Here is what is happening with your digital presence.</p>
+            <h2 class="text-4xl font-serif font-bold mb-2">Welcome back, Meet.</h2>
+            <p class="text-[#78716c] mb-12">Here is what is happening with your digital presence.</p>
 
             <div class="grid grid-cols-3 gap-6 mb-12">
-               <div class="bg-white p-6 rounded-xl border border-[#e5e0d8] shadow-sm hover:shadow-md transition-shadow">
-                  <div class="text-sm font-bold uppercase text-[#8c7b75] tracking-wider mb-2">Total Projects</div>
-                  <div class="text-4xl font-serif text-[#e67e22]">{{ contentService.projects().length }}</div>
+               <div class="bg-white p-6 rounded-xl border border-[#e7e5e4] shadow-sm hover:shadow-md transition-shadow">
+                  <div class="text-sm font-bold uppercase text-[#a8a29e] tracking-wider mb-2">Total Projects</div>
+                  <div class="text-4xl font-serif text-[#D97706]">{{ contentService.projects().length }}</div>
                </div>
-               <div class="bg-white p-6 rounded-xl border border-[#e5e0d8] shadow-sm hover:shadow-md transition-shadow">
-                  <div class="text-sm font-bold uppercase text-[#8c7b75] tracking-wider mb-2">Published Articles</div>
-                  <div class="text-4xl font-serif text-[#e67e22]">{{ contentService.blogs().length }}</div>
+               <div class="bg-white p-6 rounded-xl border border-[#e7e5e4] shadow-sm hover:shadow-md transition-shadow">
+                  <div class="text-sm font-bold uppercase text-[#a8a29e] tracking-wider mb-2">Published Articles</div>
+                  <div class="text-4xl font-serif text-[#D97706]">{{ contentService.blogs().length }}</div>
                </div>
-               <div class="bg-white p-6 rounded-xl border border-[#e5e0d8] shadow-sm hover:shadow-md transition-shadow">
-                  <div class="text-sm font-bold uppercase text-[#8c7b75] tracking-wider mb-2">Messages</div>
-                  <div class="text-4xl font-serif text-[#43302b]">12</div>
+               <div class="bg-white p-6 rounded-xl border border-[#e7e5e4] shadow-sm hover:shadow-md transition-shadow">
+                  <div class="text-sm font-bold uppercase text-[#a8a29e] tracking-wider mb-2">Messages</div>
+                  <div class="text-4xl font-serif text-[#1c1917]">12</div>
                </div>
             </div>
             
-            <div class="bg-[#e67e22]/10 p-8 rounded-2xl border border-[#e67e22]/20 flex justify-between items-center">
+            <div class="bg-[#FFFBEB] p-8 rounded-2xl border border-[#FEF3C7] flex justify-between items-center">
                <div>
-                  <h3 class="font-bold text-lg text-[#d35400]">Quick Action</h3>
-                  <p class="text-[#d35400]/80 text-sm">Update your resume context for the AI Assistant.</p>
+                  <h3 class="font-bold text-lg text-[#92400E]">Quick Action</h3>
+                  <p class="text-[#92400E]/80 text-sm">Update your resume context for the AI Assistant.</p>
                </div>
-               <button class="px-6 py-2 bg-[#e67e22] text-white font-bold rounded-lg hover:bg-[#d35400] transition-colors">
+               <button class="px-6 py-2 bg-[#F59E0B] text-white font-bold rounded-lg hover:bg-[#D97706] transition-colors">
                  Manage AI Context
                </button>
             </div>
@@ -85,62 +85,62 @@ import { ContentService, Project, BlogPost } from '../../services/content.servic
              <div class="flex justify-between items-end mb-8">
                <div>
                   <h2 class="text-3xl font-serif font-bold">Portfolio</h2>
-                  <p class="text-[#8c7b75] text-sm mt-1">Manage your visual works.</p>
+                  <p class="text-[#78716c] text-sm mt-1">Manage your visual works.</p>
                </div>
-               <button (click)="isAddingProject.set(true)" class="px-6 py-3 bg-[#43302b] text-white font-bold text-sm tracking-wide rounded-lg hover:bg-[#5d4037] transition-colors">
+               <button (click)="isAddingProject.set(true)" class="px-6 py-3 bg-[#1c1917] text-white font-bold text-sm tracking-wide rounded-lg hover:bg-[#57534e] transition-colors">
                  + New Project
                </button>
              </div>
 
              <!-- Add Project Form -->
              @if (isAddingProject()) {
-               <div class="bg-white p-8 rounded-2xl border border-[#e5e0d8] shadow-lg mb-12 animate-fade-in-up">
+               <div class="bg-white p-8 rounded-2xl border border-[#e7e5e4] shadow-lg mb-12 animate-fade-in-up">
                   <h3 class="font-bold text-lg mb-6">Create New Project</h3>
                   <div class="grid grid-cols-2 gap-6 mb-4">
                      <div class="flex flex-col gap-2">
-                        <label class="text-xs font-bold uppercase text-[#8c7b75]">Title</label>
-                        <input [(ngModel)]="newProject.title" type="text" class="bg-[#f0ede6] border border-[#e5e0d8] rounded p-3 focus:outline-none focus:border-[#e67e22]">
+                        <label class="text-xs font-bold uppercase text-[#a8a29e]">Title</label>
+                        <input [(ngModel)]="newProject.title" type="text" class="bg-[#FDFBF6] border border-[#e7e5e4] rounded p-3 focus:outline-none focus:border-[#D97706]">
                      </div>
                      <div class="flex flex-col gap-2">
-                        <label class="text-xs font-bold uppercase text-[#8c7b75]">Category</label>
-                        <input [(ngModel)]="newProject.category" type="text" class="bg-[#f0ede6] border border-[#e5e0d8] rounded p-3 focus:outline-none focus:border-[#e67e22]">
+                        <label class="text-xs font-bold uppercase text-[#a8a29e]">Category</label>
+                        <input [(ngModel)]="newProject.category" type="text" class="bg-[#FDFBF6] border border-[#e7e5e4] rounded p-3 focus:outline-none focus:border-[#D97706]">
                      </div>
                   </div>
                   <div class="flex flex-col gap-2 mb-4">
-                      <label class="text-xs font-bold uppercase text-[#8c7b75]">Image URL</label>
-                      <input [(ngModel)]="newProject.image" type="text" class="bg-[#f0ede6] border border-[#e5e0d8] rounded p-3 focus:outline-none focus:border-[#e67e22]">
+                      <label class="text-xs font-bold uppercase text-[#a8a29e]">Image URL</label>
+                      <input [(ngModel)]="newProject.image" type="text" class="bg-[#FDFBF6] border border-[#e7e5e4] rounded p-3 focus:outline-none focus:border-[#D97706]">
                   </div>
                   <div class="flex flex-col gap-2 mb-6">
-                      <label class="text-xs font-bold uppercase text-[#8c7b75]">Description</label>
-                      <textarea [(ngModel)]="newProject.description" rows="3" class="bg-[#f0ede6] border border-[#e5e0d8] rounded p-3 focus:outline-none focus:border-[#e67e22]"></textarea>
+                      <label class="text-xs font-bold uppercase text-[#a8a29e]">Description</label>
+                      <textarea [(ngModel)]="newProject.description" rows="3" class="bg-[#FDFBF6] border border-[#e7e5e4] rounded p-3 focus:outline-none focus:border-[#D97706]"></textarea>
                   </div>
                   <div class="flex justify-end gap-3">
-                     <button (click)="isAddingProject.set(false)" class="px-4 py-2 text-[#8c7b75] hover:text-[#43302b] font-bold">Cancel</button>
-                     <button (click)="createProject()" class="px-6 py-2 bg-[#e67e22] text-white font-bold rounded hover:bg-[#d35400]">Publish Work</button>
+                     <button (click)="isAddingProject.set(false)" class="px-4 py-2 text-[#78716c] hover:text-[#1c1917] font-bold">Cancel</button>
+                     <button (click)="createProject()" class="px-6 py-2 bg-[#F59E0B] text-white font-bold rounded hover:bg-[#D97706]">Publish Work</button>
                   </div>
                </div>
              }
 
              <!-- List -->
-             <div class="bg-white rounded-xl border border-[#e5e0d8] overflow-hidden">
+             <div class="bg-white rounded-xl border border-[#e7e5e4] overflow-hidden">
                 <table class="w-full">
-                   <thead class="bg-[#f0ede6] border-b border-[#e5e0d8]">
+                   <thead class="bg-[#FDFBF6] border-b border-[#e7e5e4]">
                       <tr>
-                         <th class="text-left py-4 px-6 text-xs font-bold uppercase text-[#8c7b75]">Project</th>
-                         <th class="text-left py-4 px-6 text-xs font-bold uppercase text-[#8c7b75]">Category</th>
-                         <th class="text-right py-4 px-6 text-xs font-bold uppercase text-[#8c7b75]">Actions</th>
+                         <th class="text-left py-4 px-6 text-xs font-bold uppercase text-[#a8a29e]">Project</th>
+                         <th class="text-left py-4 px-6 text-xs font-bold uppercase text-[#a8a29e]">Category</th>
+                         <th class="text-right py-4 px-6 text-xs font-bold uppercase text-[#a8a29e]">Actions</th>
                       </tr>
                    </thead>
-                   <tbody class="divide-y divide-[#f0ede6]">
+                   <tbody class="divide-y divide-[#e7e5e4]">
                       @for (p of contentService.projects(); track p.id) {
-                         <tr class="hover:bg-[#f0ede6] transition-colors group">
+                         <tr class="hover:bg-[#FDFBF6] transition-colors group">
                             <td class="py-4 px-6">
                                <div class="flex items-center gap-4">
-                                  <img [src]="p.image" class="w-10 h-10 rounded object-cover bg-[#e5e0d8]">
-                                  <span class="font-bold text-[#43302b]">{{p.title}}</span>
+                                  <img [src]="p.image" class="w-10 h-10 rounded object-cover bg-[#e7e5e4]">
+                                  <span class="font-bold text-[#1c1917]">{{p.title}}</span>
                                </div>
                             </td>
-                            <td class="py-4 px-6 text-sm text-[#8c7b75]">{{p.category}}</td>
+                            <td class="py-4 px-6 text-sm text-[#78716c]">{{p.category}}</td>
                             <td class="py-4 px-6 text-right">
                                <button (click)="contentService.deleteProject(p.id)" class="text-red-400 hover:text-red-600 text-sm font-bold px-3 py-1 rounded bg-red-50 hover:bg-red-100 transition-colors opacity-0 group-hover:opacity-100">Delete</button>
                             </td>
@@ -158,48 +158,48 @@ import { ContentService, Project, BlogPost } from '../../services/content.servic
              <div class="flex justify-between items-end mb-8">
                <div>
                   <h2 class="text-3xl font-serif font-bold">Journal</h2>
-                  <p class="text-[#8c7b75] text-sm mt-1">Share your thoughts.</p>
+                  <p class="text-[#78716c] text-sm mt-1">Share your thoughts.</p>
                </div>
-               <button (click)="isAddingBlog.set(true)" class="px-6 py-3 bg-[#43302b] text-white font-bold text-sm tracking-wide rounded-lg hover:bg-[#5d4037] transition-colors">
+               <button (click)="isAddingBlog.set(true)" class="px-6 py-3 bg-[#1c1917] text-white font-bold text-sm tracking-wide rounded-lg hover:bg-[#57534e] transition-colors">
                  + Write Article
                </button>
              </div>
 
              <!-- Add Blog Form -->
              @if (isAddingBlog()) {
-               <div class="bg-white p-8 rounded-2xl border border-[#e5e0d8] shadow-lg mb-12 animate-fade-in-up">
+               <div class="bg-white p-8 rounded-2xl border border-[#e7e5e4] shadow-lg mb-12 animate-fade-in-up">
                   <h3 class="font-bold text-lg mb-6">Write Article</h3>
                   <div class="grid grid-cols-2 gap-6 mb-4">
                      <div class="flex flex-col gap-2">
-                        <label class="text-xs font-bold uppercase text-[#8c7b75]">Title</label>
-                        <input [(ngModel)]="newBlog.title" type="text" class="bg-[#f0ede6] border border-[#e5e0d8] rounded p-3 focus:outline-none focus:border-[#e67e22]">
+                        <label class="text-xs font-bold uppercase text-[#a8a29e]">Title</label>
+                        <input [(ngModel)]="newBlog.title" type="text" class="bg-[#FDFBF6] border border-[#e7e5e4] rounded p-3 focus:outline-none focus:border-[#D97706]">
                      </div>
                      <div class="flex flex-col gap-2">
-                        <label class="text-xs font-bold uppercase text-[#8c7b75]">Category</label>
-                        <input [(ngModel)]="newBlog.category" type="text" class="bg-[#f0ede6] border border-[#e5e0d8] rounded p-3 focus:outline-none focus:border-[#e67e22]">
+                        <label class="text-xs font-bold uppercase text-[#a8a29e]">Category</label>
+                        <input [(ngModel)]="newBlog.category" type="text" class="bg-[#FDFBF6] border border-[#e7e5e4] rounded p-3 focus:outline-none focus:border-[#D97706]">
                      </div>
                   </div>
                   <div class="flex flex-col gap-2 mb-6">
-                      <label class="text-xs font-bold uppercase text-[#8c7b75]">Excerpt</label>
-                      <textarea [(ngModel)]="newBlog.excerpt" rows="3" class="bg-[#f0ede6] border border-[#e5e0d8] rounded p-3 focus:outline-none focus:border-[#e67e22]"></textarea>
+                      <label class="text-xs font-bold uppercase text-[#a8a29e]">Excerpt</label>
+                      <textarea [(ngModel)]="newBlog.excerpt" rows="3" class="bg-[#FDFBF6] border border-[#e7e5e4] rounded p-3 focus:outline-none focus:border-[#D97706]"></textarea>
                   </div>
                   <div class="flex justify-end gap-3">
-                     <button (click)="isAddingBlog.set(false)" class="px-4 py-2 text-[#8c7b75] hover:text-[#43302b] font-bold">Discard</button>
-                     <button (click)="createBlog()" class="px-6 py-2 bg-[#e67e22] text-white font-bold rounded hover:bg-[#d35400]">Publish</button>
+                     <button (click)="isAddingBlog.set(false)" class="px-4 py-2 text-[#78716c] hover:text-[#1c1917] font-bold">Discard</button>
+                     <button (click)="createBlog()" class="px-6 py-2 bg-[#F59E0B] text-white font-bold rounded hover:bg-[#D97706]">Publish</button>
                   </div>
                </div>
              }
 
              <div class="grid gap-4">
                @for (b of contentService.blogs(); track b.id) {
-                 <div class="bg-white p-6 rounded-xl border border-[#e5e0d8] flex justify-between items-center hover:shadow-md transition-shadow group">
+                 <div class="bg-white p-6 rounded-xl border border-[#e7e5e4] flex justify-between items-center hover:shadow-md transition-shadow group">
                     <div>
                        <div class="flex items-center gap-3 mb-1">
-                          <span class="text-[10px] font-bold uppercase tracking-widest text-[#e67e22]">{{b.category}}</span>
-                          <span class="text-[10px] text-[#d6d3cd]">•</span>
-                          <span class="text-[10px] text-[#8c7b75]">{{b.date}}</span>
+                          <span class="text-[10px] font-bold uppercase tracking-widest text-[#D97706]">{{b.category}}</span>
+                          <span class="text-[10px] text-[#d6d3d1]">•</span>
+                          <span class="text-[10px] text-[#78716c]">{{b.date}}</span>
                        </div>
-                       <h3 class="font-bold text-lg text-[#43302b]">{{b.title}}</h3>
+                       <h3 class="font-bold text-lg text-[#1c1917]">{{b.title}}</h3>
                     </div>
                     <button (click)="contentService.deleteBlog(b.id)" class="text-red-400 hover:text-red-600 p-2 opacity-0 group-hover:opacity-100 transition-opacity">
                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>

@@ -29,7 +29,8 @@ export class ContentService {
       id: '1',
       title: 'Neural Architecture',
       category: 'AI Model',
-      image: 'https://picsum.photos/800/600?random=1',
+      // Changed to vertical image to match layout aspect ratio
+      image: 'https://picsum.photos/800/1067?random=1',
       description: 'Designing the cognitive framework for next-gen LLMs.',
       featured: true
     },
@@ -37,7 +38,7 @@ export class ContentService {
       id: '2',
       title: 'Silence & Noise',
       category: 'Audio UX',
-      image: 'https://picsum.photos/800/600?random=2',
+      image: 'https://picsum.photos/800/1067?random=2',
       description: 'A study in auditory interfaces for blind users.',
       featured: true
     },
