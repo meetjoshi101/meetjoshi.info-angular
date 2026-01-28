@@ -1,30 +1,38 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { ContentService } from '../services/content.service';
 
 @Component({
   selector: 'app-blog',
   standalone: true,
   template: `
     <section class="animate-fade-in-up">
-      <div class="mb-16">
-        <h1 class="text-4xl md:text-5xl font-serif font-bold text-slate-900 mb-4">Journal</h1>
-        <p class="text-gray-500 font-light max-w-lg">Thoughts on engineering, design patterns, and the future of web development.</p>
+      <div class="max-w-4xl mx-auto text-center mb-24">
+        <h1 class="text-5xl md:text-7xl font-serif font-bold text-stone-900 mb-8">The Journal</h1>
+        <p class="text-lg text-stone-500 font-light italic">"Intelligence is the ability to adapt to change." — Stephen Hawking</p>
       </div>
 
-      <div class="space-y-16 max-w-3xl">
-        @for (post of posts; track post.id) {
-          <article class="group cursor-pointer">
-             <div class="flex flex-col md:flex-row md:items-baseline gap-2 md:gap-8 mb-3">
-               <span class="text-xs font-bold text-[#c5a059] uppercase tracking-widest shrink-0 w-24">{{post.month}} {{post.day}}</span>
-               <h2 class="text-2xl font-serif font-bold text-slate-900 group-hover:text-[#c5a059] transition-colors duration-300">
-                 {{post.title}}
-               </h2>
+      <div class="max-w-3xl mx-auto border-t border-stone-200">
+        @for (post of blogs(); track post.id) {
+          <article class="group py-16 border-b border-stone-200 hover:bg-stone-50 -mx-6 px-6 transition-colors cursor-pointer">
+             <div class="flex flex-col md:flex-row md:items-baseline justify-between mb-4">
+               <div class="flex items-center gap-3">
+                 <span class="text-xs font-bold uppercase tracking-widest text-[#c5a059]">{{post.category}}</span>
+                 <span class="text-stone-300">/</span>
+                 <span class="text-xs font-bold text-stone-400 uppercase tracking-widest">{{post.readTime}} read</span>
+               </div>
+               <span class="hidden md:block text-xs font-serif italic text-stone-400">{{post.date}}</span>
              </div>
+
+             <h2 class="text-3xl font-serif font-bold text-stone-900 mb-4 group-hover:text-[#c5a059] transition-colors">
+               {{post.title}}
+             </h2>
              
-             <div class="md:ml-32">
-               <p class="text-gray-500 font-light leading-relaxed mb-4">
-                 {{post.excerpt}}
-               </p>
-               <span class="inline-block text-[10px] font-bold uppercase tracking-widest border-b border-gray-300 pb-0.5 group-hover:border-[#c5a059] group-hover:text-[#c5a059] transition-colors">Read Article</span>
+             <p class="text-stone-600 font-light leading-relaxed mb-6">
+               {{post.excerpt}}
+             </p>
+
+             <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-stone-900 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
+                Read Article <span class="text-[#c5a059]">→</span>
              </div>
           </article>
         }
@@ -33,30 +41,6 @@ import { Component } from '@angular/core';
   `
 })
 export class BlogComponent {
-  posts = [
-    {
-      id: 1,
-      title: 'The Future of Frontend with AI',
-      day: '24',
-      month: 'Oct',
-      category: 'Technology',
-      excerpt: 'How Large Language Models are changing the way we write code, debug, and architect modern web applications.'
-    },
-    {
-      id: 2,
-      title: 'Designing for Accessibility',
-      day: '12',
-      month: 'Sep',
-      category: 'Design',
-      excerpt: 'Accessibility is no longer optional. Here are the key patterns and tools I use to ensure my applications are usable by everyone.'
-    },
-    {
-      id: 3,
-      title: 'Why I Switched to Angular',
-      day: '05',
-      month: 'Aug',
-      category: 'Engineering',
-      excerpt: 'A retrospective on why Angulars strict structure and recent signal updates make it superior for enterprise scale applications.'
-    }
-  ];
+  private cs = inject(ContentService);
+  blogs = this.cs.blogs;
 }

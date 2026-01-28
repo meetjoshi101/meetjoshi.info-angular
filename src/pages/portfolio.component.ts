@@ -1,11 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { NgOptimizedImage } from '@angular/common';
-
-interface Project {
-  title: string;
-  category: string;
-  image: string;
-}
+import { ContentService } from '../services/content.service';
 
 @Component({
   selector: 'app-portfolio',
@@ -13,65 +8,63 @@ interface Project {
   imports: [NgOptimizedImage],
   template: `
     <section class="animate-fade-in-up">
-      <div class="mb-16">
-        <h1 class="text-4xl md:text-5xl font-serif font-bold text-slate-900 mb-4">Selected Works</h1>
-        <p class="text-gray-500 font-light max-w-lg">A collection of projects exploring the intersection of design, technology, and user experience.</p>
+      <div class="grid md:grid-cols-12 mb-20 items-end">
+        <div class="md:col-span-8">
+          <h1 class="text-5xl md:text-7xl font-serif font-bold text-stone-900 mb-6">Selected Works</h1>
+          <p class="text-xl text-stone-500 font-light leading-relaxed">
+            An archive of experiments, products, and systems designed at the edge of possibility.
+          </p>
+        </div>
+        <div class="md:col-span-4 text-right hidden md:block">
+           <span class="text-[#c5a059] font-serif italic text-2xl">2016 — 2024</span>
+        </div>
       </div>
 
-      <div class="grid md:grid-cols-2 gap-x-10 gap-y-16">
-        @for (project of projects; track project.title) {
-          <div class="group cursor-pointer">
-            <div class="overflow-hidden mb-6 bg-gray-100 relative aspect-[4/3]">
-              <img [ngSrc]="project.image" width="600" height="450" class="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-700 ease-out" [alt]="project.title">
-              <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500"></div>
+      <!-- Filter (Visual only for now) -->
+      <div class="flex gap-8 mb-16 border-b border-stone-100 pb-4 overflow-x-auto">
+        <button class="text-xs font-bold uppercase tracking-widest text-stone-900 border-b-2 border-stone-900 pb-4">All</button>
+        <button class="text-xs font-bold uppercase tracking-widest text-stone-400 hover:text-[#c5a059] transition-colors pb-4">AI Models</button>
+        <button class="text-xs font-bold uppercase tracking-widest text-stone-400 hover:text-[#c5a059] transition-colors pb-4">Interfaces</button>
+        <button class="text-xs font-bold uppercase tracking-widest text-stone-400 hover:text-[#c5a059] transition-colors pb-4">Systems</button>
+      </div>
+
+      <div class="space-y-32">
+        @for (project of projects(); track project.id; let i = $index) {
+          <div class="group grid md:grid-cols-2 gap-12 items-center">
+            
+            <!-- Image Side -->
+            <div [class.order-last]="i % 2 !== 0" class="relative overflow-hidden aspect-video shadow-2xl shadow-stone-200">
+               <div class="absolute inset-0 bg-stone-900/10 group-hover:bg-transparent transition-colors duration-500 z-10"></div>
+               <img [ngSrc]="project.image" width="800" height="600" class="object-cover w-full h-full transform group-hover:scale-110 transition-transform duration-1000 ease-out" [alt]="project.title">
             </div>
-            <div class="flex justify-between items-baseline">
-              <h3 class="text-xl font-serif font-bold text-slate-900 group-hover:text-[#c5a059] transition-colors duration-300">{{project.title}}</h3>
-              <p class="text-xs font-bold text-gray-400 uppercase tracking-widest">{{project.category}}</p>
+
+            <!-- Text Side -->
+            <div class="relative">
+               <span class="text-9xl font-serif font-bold text-stone-50 absolute -top-20 -left-10 -z-10 select-none">{{i + 1}}</span>
+               
+               <div class="mb-4 flex items-center gap-4">
+                  <div class="h-[1px] w-8 bg-[#c5a059]"></div>
+                  <span class="text-xs font-bold uppercase tracking-widest text-[#c5a059]">{{project.category}}</span>
+               </div>
+               
+               <h2 class="text-4xl font-serif font-bold text-stone-900 mb-6 group-hover:translate-x-2 transition-transform duration-300">{{project.title}}</h2>
+               <p class="text-stone-600 font-light leading-relaxed mb-8 max-w-md">
+                 {{project.description}}
+               </p>
+               
+               <button class="text-sm font-bold uppercase tracking-widest text-stone-900 hover:text-[#c5a059] transition-colors flex items-center gap-2">
+                 View Case Study
+                 <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+               </button>
             </div>
+            
           </div>
         }
-      </div>
-      
-      <div class="mt-24 text-center">
-        <button class="px-10 py-4 border border-gray-200 text-xs font-bold uppercase tracking-[0.2em] hover:bg-[#c5a059] hover:text-white hover:border-[#c5a059] transition-all duration-300">
-          Load More
-        </button>
       </div>
     </section>
   `
 })
 export class PortfolioComponent {
-  projects: Project[] = [
-    {
-      title: 'Minimalist Commerce',
-      category: 'Web',
-      image: 'https://picsum.photos/600/450?random=10'
-    },
-    {
-      title: 'Financial Dashboard',
-      category: 'Product',
-      image: 'https://picsum.photos/600/450?random=11'
-    },
-    {
-      title: 'Nomad Travel',
-      category: 'App',
-      image: 'https://picsum.photos/600/450?random=12'
-    },
-    {
-      title: 'Architect Studio',
-      category: 'Branding',
-      image: 'https://picsum.photos/600/450?random=13'
-    },
-    {
-      title: 'Vitality Health',
-      category: 'PWA',
-      image: 'https://picsum.photos/600/450?random=14'
-    },
-    {
-      title: 'Urban Estate',
-      category: 'Platform',
-      image: 'https://picsum.photos/600/450?random=15'
-    }
-  ];
+  private cs = inject(ContentService);
+  projects = this.cs.projects;
 }

@@ -33,7 +33,7 @@ import { NgOptimizedImage } from '@angular/common';
       <!-- Profile Section -->
       <div class="pt-16 pb-10 px-8 text-center">
         <div class="w-36 h-36 mx-auto mb-8 relative rounded-full overflow-hidden grayscale hover:grayscale-0 transition-all duration-500 cursor-pointer">
-           <img ngSrc="https://picsum.photos/300/300" width="300" height="300" alt="Profile Photo" class="object-cover w-full h-full">
+           <img ngSrc="https://picsum.photos/300/300" width="300" height="300" priority alt="Profile Photo" class="object-cover w-full h-full">
         </div>
         <h1 class="font-serif font-bold text-3xl text-slate-900 mb-2 tracking-tight">Alex Dev</h1>
         <p class="text-xs font-semibold text-[#c5a059] uppercase tracking-[0.2em] mb-8">Full Stack Engineer</p>
