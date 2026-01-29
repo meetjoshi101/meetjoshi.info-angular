@@ -12,7 +12,7 @@ import { RouterLink } from '@angular/router';
       <!-- HERO SECTION -->
       <section class="grid lg:grid-cols-12 gap-12 lg:gap-24 items-start mb-32">
          <!-- Image -->
-         <div class="lg:col-span-5 relative">
+         <div class="lg:col-span-4 relative">
             <div class="aspect-[3/4] bg-[#f5f5f4] relative overflow-hidden rounded-sm">
                <img ngSrc="https://picsum.photos/600/800?random=50" width="600" height="800" priority class="object-cover w-full h-full grayscale hover:grayscale-0 transition-all duration-1000" alt="Portrait of Meet Joshi">
                
@@ -27,7 +27,7 @@ import { RouterLink } from '@angular/router';
          </div>
 
          <!-- Intro Text -->
-         <div class="lg:col-span-7 pt-8">
+         <div class="lg:col-span-8 pt-8">
             <span class="block font-mono text-xs font-bold uppercase tracking-widest text-[#D97706] mb-6">The Architect</span>
             <h1 class="font-serif text-5xl md:text-7xl text-[#1c1917] mb-8 leading-[0.9]">
                Building digital <br> cathedrals.
