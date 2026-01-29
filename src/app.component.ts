@@ -13,8 +13,8 @@ import { NavbarComponent } from './components/navbar.component';
       
       <!-- Main Content Area -->
       <main class="md:ml-[280px] min-h-screen transition-all duration-300">
-        <!-- Layout System: px-8(32px) md:px-16(64px) lg:px-24(96px) -->
-        <div class="px-8 py-12 md:px-16 md:py-24 lg:px-24 lg:py-24 max-w-[1600px]">
+        <!-- Layout System: px-6(24px) md:px-16(64px) lg:px-24(96px) -->
+        <div class="w-full max-w-[1600px] mx-auto px-6 py-8 md:px-16 md:py-24 lg:px-24 lg:py-24">
           <router-outlet></router-outlet>
         </div>
       </main>
