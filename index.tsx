@@ -5,14 +5,22 @@ import { provideRouter, withHashLocation, Routes } from '@angular/router';
 import { AppComponent } from './src/app.component';
 import { HomeComponent } from './src/pages/home.component';
 import { PortfolioComponent } from './src/pages/portfolio.component';
+import { CaseStudyComponent } from './src/pages/case-study.component';
+import { FullCaseStudyComponent } from './src/pages/full-case-study.component';
 import { BlogComponent } from './src/pages/blog.component';
+import { BlogPostComponent } from './src/pages/blog-post.component';
+import { ProfileComponent } from './src/pages/profile.component';
 import { ContactComponent } from './src/pages/contact.component';
 import { AdminComponent } from './src/pages/admin/admin.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'work', component: PortfolioComponent },
+  { path: 'work/:id', component: CaseStudyComponent },
+  { path: 'work/:id/story', component: FullCaseStudyComponent },
   { path: 'blog', component: BlogComponent },
+  { path: 'blog/:id', component: BlogPostComponent },
+  { path: 'profile', component: ProfileComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'admin', component: AdminComponent },
   { path: '**', redirectTo: '' }

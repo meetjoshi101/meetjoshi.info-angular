@@ -126,7 +126,7 @@ import { ContentService } from '../services/content.service';
         <!-- Project Grid -->
         <div class="grid md:grid-cols-2 gap-x-12 gap-y-12 md:gap-y-20">
            @for (project of featuredProjects(); track project.id) {
-              <div class="group cursor-pointer block">
+              <a [routerLink]="['/work', project.id]" class="group cursor-pointer block">
                  <!-- Image -->
                  <div class="relative overflow-hidden aspect-[4/3] bg-[#f5f5f4] mb-6">
                     <div class="absolute inset-0 bg-[#1c1917]/0 group-hover:bg-[#1c1917]/5 transition-colors duration-500 z-10"></div>
@@ -147,7 +147,7 @@ import { ContentService } from '../services/content.service';
                        <span class="font-mono text-xs text-[#a8a29e]">0{{$index + 1}}</span>
                     </div>
                  </div>
-              </div>
+              </a>
            }
         </div>
         

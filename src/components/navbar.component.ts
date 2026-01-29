@@ -65,8 +65,8 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
             </a>
           </li>
           <li>
-            <!-- Placeholder for Profile -->
-            <a routerLink="/" fragment="profile" (click)="closeMenu()" 
+            <a routerLink="/profile" (click)="closeMenu()" 
+               routerLinkActive="text-[#D97706] font-bold"
                class="block font-serif text-lg font-medium tracking-tight text-[#78716c] hover:text-[#292524] transition-colors duration-300">
               Profile
             </a>

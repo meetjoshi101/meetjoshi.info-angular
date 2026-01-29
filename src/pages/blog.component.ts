@@ -1,9 +1,11 @@
 import { Component, inject } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { ContentService } from '../services/content.service';
 
 @Component({
   selector: 'app-blog',
   standalone: true,
+  imports: [RouterLink],
   template: `
     <section class="animate-fade-in-up">
       <div class="max-w-4xl mx-auto text-center mb-24">
@@ -13,7 +15,7 @@ import { ContentService } from '../services/content.service';
 
       <div class="max-w-3xl mx-auto border-t border-[#e7e5e4]">
         @for (post of blogs(); track post.id) {
-          <article class="group py-16 border-b border-[#e7e5e4] hover:bg-[#FDFBF6] -mx-6 px-6 transition-colors cursor-pointer">
+          <a [routerLink]="['/blog', post.id]" class="block group py-16 border-b border-[#e7e5e4] hover:bg-[#FDFBF6] -mx-6 px-6 transition-colors cursor-pointer">
              <div class="flex flex-col md:flex-row md:items-baseline justify-between mb-4">
                <div class="flex items-center gap-3">
                  <span class="text-xs font-bold uppercase tracking-widest text-[#D97706]">{{post.category}}</span>
@@ -34,7 +36,7 @@ import { ContentService } from '../services/content.service';
              <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#1c1917] opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
                 Read Article <span class="text-[#D97706]">→</span>
              </div>
-          </article>
+          </a>
         }
       </div>
     </section>

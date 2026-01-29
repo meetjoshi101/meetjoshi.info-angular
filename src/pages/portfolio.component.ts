@@ -1,11 +1,12 @@
 import { Component, inject } from '@angular/core';
 import { NgOptimizedImage } from '@angular/common';
+import { RouterLink } from '@angular/router';
 import { ContentService } from '../services/content.service';
 
 @Component({
   selector: 'app-portfolio',
   standalone: true,
-  imports: [NgOptimizedImage],
+  imports: [NgOptimizedImage, RouterLink],
   template: `
     <section class="animate-fade-in-up">
       <div class="grid md:grid-cols-12 mb-20 items-end">
@@ -33,10 +34,10 @@ import { ContentService } from '../services/content.service';
           <div class="group grid md:grid-cols-2 gap-12 items-center">
             
             <!-- Image Side -->
-            <div [class.order-last]="i % 2 !== 0" class="relative overflow-hidden aspect-video shadow-2xl shadow-[#e7e5e4]">
+            <a [routerLink]="['/work', project.id]" [class.order-last]="i % 2 !== 0" class="block relative overflow-hidden aspect-video shadow-2xl shadow-[#e7e5e4] cursor-pointer">
                <div class="absolute inset-0 bg-[#1c1917]/10 group-hover:bg-transparent transition-colors duration-500 z-10"></div>
                <img [ngSrc]="project.image" width="800" height="600" class="object-cover w-full h-full transform group-hover:scale-110 transition-transform duration-1000 ease-out" [alt]="project.title">
-            </div>
+            </a>
 
             <!-- Text Side -->
             <div class="relative">
@@ -47,15 +48,17 @@ import { ContentService } from '../services/content.service';
                   <span class="text-xs font-bold uppercase tracking-widest text-[#D97706]">{{project.category}}</span>
                </div>
                
-               <h2 class="text-4xl font-serif font-bold text-[#1c1917] mb-6 group-hover:translate-x-2 transition-transform duration-300">{{project.title}}</h2>
+               <h2 class="text-4xl font-serif font-bold text-[#1c1917] mb-6 group-hover:translate-x-2 transition-transform duration-300">
+                 <a [routerLink]="['/work', project.id]" class="hover:text-[#57534e] transition-colors">{{project.title}}</a>
+               </h2>
                <p class="text-[#57534e] font-light leading-relaxed mb-8 max-w-md">
                  {{project.description}}
                </p>
                
-               <button class="text-sm font-bold uppercase tracking-widest text-[#1c1917] hover:text-[#D97706] transition-colors flex items-center gap-2">
+               <a [routerLink]="['/work', project.id]" class="text-sm font-bold uppercase tracking-widest text-[#1c1917] hover:text-[#D97706] transition-colors flex items-center gap-2 cursor-pointer">
                  View Case Study
                  <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-               </button>
+               </a>
             </div>
             
           </div>
